@@ -169,7 +169,6 @@ plugins=(
 # ZSH_TMUX_AUTOSTART='true'
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -364,3 +363,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+autoload -U compinit && compinit
+_dotbare_completion_cmd
