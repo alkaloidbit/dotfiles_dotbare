@@ -232,7 +232,7 @@ export FZF_CTRL_T_OPTS="
 "
 
 
-# zsh example
+# Create keybinds for dotbare(ctrl-g to launch fedit and edit files).
 bindkey -s '^g' "dotbare fedit"^j
 
 # --exclude <pattern> ... Exclude entries that match the given glob pattern ( ... dont search in .git folder ... )
