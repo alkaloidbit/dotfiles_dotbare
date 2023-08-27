@@ -16,12 +16,12 @@ fi
 #
 # Tmux
 #
-export DISABLE_AUTO_TITLE='true'
+# export DISABLE_AUTO_TITLE='true'
 
-if [ -z "$TMUX" ]
-then
-  tmux attach -t TMUX || tmux new -s TMUX
-fi
+# if [ -z "$TMUX" ]
+# then
+# fi
+# # tmux attach -t TMUX || tmux new -s TMUX
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
