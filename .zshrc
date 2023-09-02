@@ -6,6 +6,8 @@
 #(_)____|____/|_| |_|_| \_\\____|
 
 
+export VISUAL='nvim'
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
@@ -365,3 +367,4 @@ unset __conda_setup
 
 autoload -U compinit && compinit
 _dotbare_completion_cmd
+eval "$(zoxide init zsh)"
