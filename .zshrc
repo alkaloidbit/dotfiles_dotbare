@@ -7,7 +7,6 @@
 
 
 export VISUAL='nvim'
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
@@ -34,6 +33,9 @@ export PATH=$HOME/Scripts:$PATH
 export PATH=$HOME/bin/PhpStorm-212.5284.49/bin:$PATH
 
 export PATH=$HOME/.helpers/open/:$PATH
+
+## bcompare install instruction
+export PATH=/home/fred-badlieutenant/.cache/yay/bcompare/src/install/bin:$PATH
 
 # export MANPATH=/usr/share/man:$MANPATH
 
@@ -184,7 +186,7 @@ source /etc/profile.d/locale.sh
 #Locales https://memo-linux.com/resoudre-lerreur-perl-warning-setting-locale-failed/
 export LANGUAGE=fr_FR.UTF-8
 export LANG=fr_FR.UTF-8
-export LC_ALL=fr_FR.UTF-8
+export LC_ALL=en_US.UTF-8
 
 
 

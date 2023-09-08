@@ -89,7 +89,8 @@ alias pbpaste='xclip -selection clipboard -o'
 alias susys="sudo systemctl"
 
 # Git english
-alias git='LANG=en_GB git'
+# alias git='LANG=en_GB git'
+alias git='LC_ALL=en_US.UTF-8 git'
 
 alias gg='git graph'
 alias gsts='git status -s'
