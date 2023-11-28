@@ -223,11 +223,17 @@ NVIM_MINIMALIST=~/.config/nvim-minimalist
 export NVIM_MINIMALIST
 alias nvmm='XDG_DATA_HOME=$NVIM_MINIMALIST/share XDG_CACHE_HOME=$NVIM_MINIMALIST XDG_CONFIG_HOME=$NVIM_MINIMALIST nvim'
 
-# GLEPNIR NVIM
-# https://github.com/glepnir/nvim
-GLEPNIR_NVIM=~/.config/glepnir-nvim
-export GLEPNIR_NVIM
-alias glep='XDG_DATA_HOME=$GLEPNIR_NVIM/share XDG_CACHE_HOME=$GLEPNIR_NVIM XDG_CONFIG_HOME=$GLEPNIR_NVIM nvim'
+MODERN_NEOVIM=~/.config/modern-neovim
+export MODERN_NEOVIM
+alias mnv='XDG_DATA_HOME=$MODERN_NEOVIM/share XDG_CACHE_HOME=$MODERN_NEOVIM XDG_CONFIG_HOME=$MODERN_NEOVIM nvim'
+
+NVIM_CHAD=~/.config/nv-chad
+export NVIM_CHAD
+alias nvc='XDG_DATA_HOME=$NVIM_CHAD/share XDG_CACHE_HOME=$NVIM_CHAD XDG_CONFIG_HOME=$NVIM_CHAD nvim'
+
+VIMCONF=~/.config/vim-config
+export VIMCONF
+alias vcf='XDG_DATA_HOME=$VIMCONF/share XDG_CACHE_HOME=$VIMCONF XDG_CONFIG_HOME=$VIMCONF nvim'
 
 export FZF_CTRL_T_OPTS="
 --ansi
@@ -266,6 +272,12 @@ function t() {
         fzf --query="$1 " --select-1 --exit-0 --height=25% --reverse --tac --no-sort --cycle) &&
     cd "$fasdlist"
 }
+
+##########
+## DENO ##
+##########
+export DENO_INSTALL="/home/fred-badlieutenant/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # vf - fuzzy open with vim from anywhere
 # ex: vf word1 word2 ... (even part of a file name)
@@ -370,3 +382,10 @@ unset __conda_setup
 autoload -U compinit && compinit
 _dotbare_completion_cmd
 eval "$(zoxide init zsh)"
+
+export OPENAI_API_KEY="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"
+
+# BEGIN SNIPPET: Platform.sh CLI configuration
+HOME=${HOME:-'/home/fred-badlieutenant'}
+export PATH="$HOME/"'.platformsh/bin':"$PATH"
+if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET

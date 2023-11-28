@@ -106,7 +106,7 @@ alias emoj="emoji-fzf preview | fzf -m --preview "emoji-fzf get --name {1}" | cu
 alias j=z
 alias jj=zz
 
-alias rms="rm -rf $HOME/.local/share/nvim/sessions/*"
+alias rms="rm -rf $HOME/.local/state/nvim/sessions/*"
 
 alias artisan="php artisan"
 alias sail="./vendor/bin/sail"
