@@ -28,6 +28,8 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
+
+
 ## My custom path for scripts
 export PATH=$HOME/Scripts:$PATH
 export PATH=$HOME/bin/PhpStorm-212.5284.49/bin:$PATH
@@ -279,6 +281,7 @@ function t() {
 export DENO_INSTALL="/home/fred-badlieutenant/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+
 # vf - fuzzy open with vim from anywhere
 # ex: vf word1 word2 ... (even part of a file name)
 # zsh autoload function
@@ -364,6 +367,28 @@ source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+nvm_auto_use() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd nvm_auto_use
+nvm_auto_use
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/fred-badlieutenant/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -389,3 +414,7 @@ export OPENAI_API_KEY="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"
 HOME=${HOME:-'/home/fred-badlieutenant'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
+export PATH=/home/fred-badlieutenant/.platformsh/bin:/home/fred-badlieutenant/anaconda3/bin:/home/fred-badlieutenant/anaconda3/condabin:/home/fred-badlieutenant/.npm/bin:/home/fred-badlieutenant/.nvm/versions/node/v16.19.1/bin:/home/fred-badlieutenant/.symfony5/bin:/home/fred-badlieutenant/.deno/bin:/home/fred-badlieutenant/.luarocks/bin:/home/fred-badlieutenant/.cache/yay/bcompare/src/install/bin:/home/fred-badlieutenant/.helpers/open:/home/fred-badlieutenant/bin/PhpStorm-212.5284.49/bin:/home/fred-badlieutenant/Scripts:/home/fred-badlieutenant/.local/bin:/home/fred-badlieutenant/bin:/usr/local/bin:/home/fred-badlieutenant/.local/kitty.app/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/fred-badlieutenant/.config/oh-my-zsh/custom/plugins/dotbare:/home/fred-badlieutenant/.rvm/bin:/home/fred-badlieutenant/.local/share/nvim/lazy/fzf/bin:/opt/spark/bin:/opt/spark/bin/
+export PYSPARK_DRIVER_PYTHON='jupyter'
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+export SPARK_HOME=/opt/spark
