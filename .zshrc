@@ -178,7 +178,25 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
 "
 
-# NVIM MINIMALIST
+export FZF_CTRL_T_OPTS="
+--ansi
+--preview ' bat --color=always  --line-range :300 {}'
+--bind '?:toggle-preview'
+"
+# --exclude <pattern> ... Exclude entries that match the given glob pattern ( ... dont search in .git folder ... )
+# --no-ignore             Don not respect .(git/fd)ignore files
+export FZF_DEFAULT_COMMAND="fd --type file --color=always --hidden --exclude .git "
+
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+
+export FZF_ALT_C_COMMAND="fd  --hidden --follow --exclude '.git' --exclude 'node_modules' --type d"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+########
+# NVIM #
+########
+
 # https://alpha2phi.medium.com/neovim-for-minimalists-init-lua-b978752686e8
 NVIM_MINIMALIST=~/.config/nvim-minimalist
 export NVIM_MINIMALIST
@@ -196,26 +214,15 @@ VIMCONF=~/.config/vim-config
 export VIMCONF
 alias vcf='XDG_DATA_HOME=$VIMCONF/share XDG_CACHE_HOME=$VIMCONF XDG_CONFIG_HOME=$VIMCONF nvim'
 
-export FZF_CTRL_T_OPTS="
---ansi
---preview ' bat --color=always  --line-range :300 {}'
---bind '?:toggle-preview'
-"
-
+###########
+# DOTBARE #
+###########
 
 # Create keybinds for dotbare(ctrl-g to launch fedit and edit files).
 bindkey -s '^g' "dotbare fedit"^j
 
-# --exclude <pattern> ... Exclude entries that match the given glob pattern ( ... dont search in .git folder ... )
-# --no-ignore             Don not respect .(git/fd)ignore files
-export FZF_DEFAULT_COMMAND="fd --type file --color=always --hidden --exclude .git "
-
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-
-export FZF_ALT_C_COMMAND="fd  --hidden --follow --exclude '.git' --exclude 'node_modules' --type d"
-
 #########
-## Bat ##
+## BAT ##
 #########
 
 export BAT_THEME="Nord"
@@ -237,6 +244,7 @@ function t() {
 ##########
 ## DENO ##
 ##########
+
 export DENO_INSTALL="/home/fred-badlieutenant/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
@@ -314,18 +322,6 @@ test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # NVM
 source /usr/share/nvm/init-nvm.sh
-
-
-export PATH="$HOME/.npm/bin:$PATH"
-unalias t
-
-export ZK_NOTEBOOK_DIR="$HOME/Documents/my-notes"
-
-source $ZSH_CUSTOM/plugins/forgit/forgit.plugin.zsh
-source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
@@ -348,6 +344,21 @@ nvm_auto_use() {
 }
 add-zsh-hook chpwd nvm_auto_use
 nvm_auto_use
+
+
+export PATH="$HOME/.npm/bin:$PATH"
+unalias t
+
+######
+# ZK #
+######
+
+export ZK_NOTEBOOK_DIR="$HOME/Documents/my-notes"
+
+source $ZSH_CUSTOM/plugins/forgit/forgit.plugin.zsh
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/fred-badlieutenant/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -374,6 +385,8 @@ HOME=${HOME:-'/home/fred-badlieutenant'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
 export PATH=/home/fred-badlieutenant/.platformsh/bin:/home/fred-badlieutenant/anaconda3/bin:/home/fred-badlieutenant/anaconda3/condabin:/home/fred-badlieutenant/.npm/bin:/home/fred-badlieutenant/.nvm/versions/node/v16.19.1/bin:/home/fred-badlieutenant/.symfony5/bin:/home/fred-badlieutenant/.deno/bin:/home/fred-badlieutenant/.luarocks/bin:/home/fred-badlieutenant/.cache/yay/bcompare/src/install/bin:/home/fred-badlieutenant/.helpers/open:/home/fred-badlieutenant/bin/PhpStorm-212.5284.49/bin:/home/fred-badlieutenant/Scripts:/home/fred-badlieutenant/.local/bin:/home/fred-badlieutenant/bin:/usr/local/bin:/home/fred-badlieutenant/.local/kitty.app/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/fred-badlieutenant/.config/oh-my-zsh/custom/plugins/dotbare:/home/fred-badlieutenant/.rvm/bin:/home/fred-badlieutenant/.local/share/nvim/lazy/fzf/bin:/opt/spark/bin:/opt/spark/bin/
+
+# SPARK CLI configuration
 export PYSPARK_DRIVER_PYTHON='jupyter'
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 export SPARK_HOME=/opt/spark
