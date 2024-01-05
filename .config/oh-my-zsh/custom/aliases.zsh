@@ -102,6 +102,9 @@ alias gsts='git status -s'
 # emoji-fzf
 alias emoj="emoji-fzf preview | fzf -m --preview "emoji-fzf get --name {1}" | cut -d " " -f 1 | emoji-fzf get"
 
+# spaceship prompt
+alias spr="spaceship remove "
+
 # Z integration
 alias j=z
 alias jj=zz
